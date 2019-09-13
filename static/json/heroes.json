@@ -6,6 +6,7 @@
         "talents": { 
             "lvl10": { 
                 "left": "+ 25 к опыту",
+                "exp": true,
                 "right": "20 к скорости передвижения"
             },
             "lvl15": { 
@@ -28,7 +29,9 @@
         "talents": { 
             "lvl10": { 
                 "left": "-7 сек. перезарядки Unstable Concoction",
-                "right": "+25 к скорости атаки"
+                "exp": true,
+                "right": "+25 к скорости атаки",
+                "attackspeed": true
             },
             "lvl15": { 
                 "left": "+50 к урону",
@@ -70,8 +73,9 @@
         "id" : 4,
         "name": "Anti-Mage",
         "talents": { 
-            "lvl10": { 
+            "lvl10": {
                 "left": "+20 к скорости атаки",
+                "attackspeed": true,
                 "right": "+10 к силе"
             },
             "lvl15": { 
@@ -94,6 +98,7 @@
         "talents": { 
             "lvl10": { 
                 "left": "+35 к скорости атаки",
+                "attackspeed": true,
                 "right": "-8% перезарядки способностей и предметов"
             },
             "lvl15": { 
@@ -124,7 +129,8 @@
             },
             "lvl20": { 
                 "left": "123",
-                "right": "123"
+                "right": "123",
+                "attackspeed": true
             },
             "lvl25": { 
                 "left": "123",
