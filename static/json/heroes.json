@@ -4,9 +4,11 @@
         "id" : 1,
         "name": "Abaddon",
         "talents": { 
+            "exp": true,
+            "ms": true,
+            "cd": true,
             "lvl10": { 
                 "left": "+ 25 к опыту",
-                "exp": true,
                 "right": "20 к скорости передвижения"
             },
             "lvl15": { 
@@ -27,11 +29,10 @@
         "id" : 2,
         "name": "Alchemist",
         "talents": { 
+            "attackspeed": true,
             "lvl10": { 
                 "left": "-7 сек. перезарядки Unstable Concoction",
-                "exp": true,
-                "right": "+25 к скорости атаки",
-                "attackspeed": true
+                "right": "+25 к скорости атаки"
             },
             "lvl15": { 
                 "left": "+50 к урону",
@@ -51,6 +52,7 @@
         "id" : 3,
         "name": "Ancient Apparition",
         "talents": { 
+            "spelldamage": true,
             "lvl10": { 
                 "left": "+10% к урону от способностей",
                 "right": "+90 золота в минуту"
@@ -73,9 +75,9 @@
         "id" : 4,
         "name": "Anti-Mage",
         "talents": { 
+            "attackspeed": true,
             "lvl10": {
                 "left": "+20 к скорости атаки",
-                "attackspeed": true,
                 "right": "+10 к силе"
             },
             "lvl15": { 
@@ -96,9 +98,10 @@
         "id" : 5,
         "name": "Arc Warden",
         "talents": { 
+            "attackspeed": true,
+            "cd": true,
             "lvl10": { 
                 "left": "+35 к скорости атаки",
-                "attackspeed": true,
                 "right": "-8% перезарядки способностей и предметов"
             },
             "lvl15": { 
@@ -117,7 +120,7 @@
     },
     {
         "id" : 2,
-        "name": "123",
+        "name": "test",
         "talents": { 
             "lvl10": { 
                 "left": "234",
@@ -129,8 +132,7 @@
             },
             "lvl20": { 
                 "left": "123",
-                "right": "123",
-                "attackspeed": true
+                "right": "123"
             },
             "lvl25": { 
                 "left": "123",

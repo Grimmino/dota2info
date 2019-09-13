@@ -315,13 +315,19 @@ h2 {
   text-align: center;
   margin-bottom: 20px; }
 
-.grid__header {
-  display: flex;
-  justify-content: space-between; }
-
-.grid__heroes {
-  display: flex;
-  flex-wrap: wrap; }
+.grid {
+  display: flex; }
+  .grid__filter_item {
+    padding: 5px 0;
+    cursor: pointer;
+    color: #fff; }
+    .grid__filter_item:hover {
+      background: #fff;
+      color: #141c25; }
+  .grid__heroes {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap; }
 
 .hero {
   width: 10%;

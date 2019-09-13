@@ -115,7 +115,7 @@ if (false) { var throwOnDirectAccess, ReactIs; } else {
 /* 2 */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"heroes\":[{\"id\":1,\"name\":\"Abaddon\",\"talents\":{\"lvl10\":{\"left\":\"+ 25 к опыту\",\"exp\":true,\"right\":\"20 к скорости передвижения\"},\"lvl15\":{\"left\":\"+60 к урону/лечению от Mist Coil\",\"right\":\"+8 к броне\"},\"lvl20\":{\"left\":\"+90 к урону\",\"right\":\"-20% перезарядки способностей и предметов\"},\"lvl25\":{\"left\":\"Mist Coil применяется по области радиусом 375\",\"right\":\"+225 к здоровью щита от Aphotic Shield\"}}},{\"id\":2,\"name\":\"Alchemist\",\"talents\":{\"lvl10\":{\"left\":\"-7 сек. перезарядки Unstable Concoction\",\"exp\":true,\"right\":\"+25 к скорости атаки\",\"attackspeed\":true},\"lvl15\":{\"left\":\"+50 к урону\",\"right\":\"+400 к здоровью\"},\"lvl20\":{\"left\":\"+400 к урону от Unstable Concoction\",\"right\":\"+40% к прорубающему урону\"},\"lvl25\":{\"left\":\"+30 к восстановлению здоровья от Chemical Rage\",\"right\":\"-0,2 от задержки перед атакой у Chemical Rage\"}}},{\"id\":3,\"name\":\"Ancient Apparition\",\"talents\":{\"lvl10\":{\"left\":\"+10% к урону от способностей\",\"right\":\"+90 золота в минуту\"},\"lvl15\":{\"left\":\"+15 здоровья в секунду\",\"right\":\"-2,5 сек. перезарядки Ice Vortex\"},\"lvl20\":{\"left\":\"+80 к урону от Chilling Touch\",\"right\":\"+8% к замедлению и маг. урону от Ice Vortex\"},\"lvl25\":{\"left\":\"+5% к здоровью для убийства от Ice Blast\",\"right\":\"Cold Feet применяется по области радиусом 625\"}}},{\"id\":4,\"name\":\"Anti-Mage\",\"talents\":{\"lvl10\":{\"left\":\"+20 к скорости атаки\",\"attackspeed\":true,\"right\":\"+10 к силе\"},\"lvl15\":{\"left\":\"+15 к ловкости\",\"right\":\"+400 к дальности Blink\"},\"lvl20\":{\"left\":\"-2,5 сек. перезарядки Blink\",\"right\":\"Blink оставляет бесконтрольную иллюзию\"},\"lvl25\":{\"left\":\"-50 сек. перезарядки Mana Void\",\"right\":\"+25% к сопротивлению магии от Counterspell\"}}},{\"id\":5,\"name\":\"Arc Warden\",\"talents\":{\"lvl10\":{\"left\":\"+35 к скорости атаки\",\"attackspeed\":true,\"right\":\"-8% перезарядки способностей и предметов\"},\"lvl15\":{\"left\":\"+400 к дальности применения Flux\",\"right\":\"+300 к здоровью\"},\"lvl20\":{\"left\":\"+125 к дальности атаки\",\"right\":\"-2 сек. перезарядки Spark Wraith\"},\"lvl25\":{\"left\":\"+350 к урону от Spark Wraith\",\"right\":\"+30% к вампиризму\"}}},{\"id\":2,\"name\":\"123\",\"talents\":{\"lvl10\":{\"left\":\"234\",\"right\":\"123\"},\"lvl15\":{\"left\":\"123\",\"right\":\"123\"},\"lvl20\":{\"left\":\"123\",\"right\":\"123\",\"attackspeed\":true},\"lvl25\":{\"left\":\"123\",\"right\":\"123\"}}}]}");
+module.exports = JSON.parse("{\"heroes\":[{\"id\":1,\"name\":\"Abaddon\",\"talents\":{\"exp\":true,\"ms\":true,\"cd\":true,\"lvl10\":{\"left\":\"+ 25 к опыту\",\"right\":\"20 к скорости передвижения\"},\"lvl15\":{\"left\":\"+60 к урону/лечению от Mist Coil\",\"right\":\"+8 к броне\"},\"lvl20\":{\"left\":\"+90 к урону\",\"right\":\"-20% перезарядки способностей и предметов\"},\"lvl25\":{\"left\":\"Mist Coil применяется по области радиусом 375\",\"right\":\"+225 к здоровью щита от Aphotic Shield\"}}},{\"id\":2,\"name\":\"Alchemist\",\"talents\":{\"attackspeed\":true,\"lvl10\":{\"left\":\"-7 сек. перезарядки Unstable Concoction\",\"right\":\"+25 к скорости атаки\"},\"lvl15\":{\"left\":\"+50 к урону\",\"right\":\"+400 к здоровью\"},\"lvl20\":{\"left\":\"+400 к урону от Unstable Concoction\",\"right\":\"+40% к прорубающему урону\"},\"lvl25\":{\"left\":\"+30 к восстановлению здоровья от Chemical Rage\",\"right\":\"-0,2 от задержки перед атакой у Chemical Rage\"}}},{\"id\":3,\"name\":\"Ancient Apparition\",\"talents\":{\"spelldamage\":true,\"lvl10\":{\"left\":\"+10% к урону от способностей\",\"right\":\"+90 золота в минуту\"},\"lvl15\":{\"left\":\"+15 здоровья в секунду\",\"right\":\"-2,5 сек. перезарядки Ice Vortex\"},\"lvl20\":{\"left\":\"+80 к урону от Chilling Touch\",\"right\":\"+8% к замедлению и маг. урону от Ice Vortex\"},\"lvl25\":{\"left\":\"+5% к здоровью для убийства от Ice Blast\",\"right\":\"Cold Feet применяется по области радиусом 625\"}}},{\"id\":4,\"name\":\"Anti-Mage\",\"talents\":{\"attackspeed\":true,\"lvl10\":{\"left\":\"+20 к скорости атаки\",\"right\":\"+10 к силе\"},\"lvl15\":{\"left\":\"+15 к ловкости\",\"right\":\"+400 к дальности Blink\"},\"lvl20\":{\"left\":\"-2,5 сек. перезарядки Blink\",\"right\":\"Blink оставляет бесконтрольную иллюзию\"},\"lvl25\":{\"left\":\"-50 сек. перезарядки Mana Void\",\"right\":\"+25% к сопротивлению магии от Counterspell\"}}},{\"id\":5,\"name\":\"Arc Warden\",\"talents\":{\"attackspeed\":true,\"cd\":true,\"lvl10\":{\"left\":\"+35 к скорости атаки\",\"right\":\"-8% перезарядки способностей и предметов\"},\"lvl15\":{\"left\":\"+400 к дальности применения Flux\",\"right\":\"+300 к здоровью\"},\"lvl20\":{\"left\":\"+125 к дальности атаки\",\"right\":\"-2 сек. перезарядки Spark Wraith\"},\"lvl25\":{\"left\":\"+350 к урону от Spark Wraith\",\"right\":\"+30% к вампиризму\"}}},{\"id\":2,\"name\":\"test\",\"talents\":{\"lvl10\":{\"left\":\"234\",\"right\":\"123\"},\"lvl15\":{\"left\":\"123\",\"right\":\"123\"},\"lvl20\":{\"left\":\"123\",\"right\":\"123\"},\"lvl25\":{\"left\":\"123\",\"right\":\"123\"}}}]}");
 
 /***/ }),
 /* 3 */
@@ -11148,8 +11148,12 @@ function (_React$Component) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "componentWillMount", function () {
+      _this.filterHeroes(heroes.heroes);
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "filterHeroes", function (arrayheroes) {
       _this.setState({
-        heroes: heroes.heroes
+        heroes: arrayheroes
       });
     });
 
@@ -11160,35 +11164,44 @@ function (_React$Component) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "sortHeroes", function (filter) {
-      var filterHero = [];
-
       switch (filter) {
         case 'all':
-          _this.setState({
-            heroes: heroes.heroes
-          });
+          _this.filterHeroes(heroes.heroes);
 
           break;
 
         case 'exp':
-          heroes.heroes.map(function (hero) {
-            hero.talents.lvl10.exp == true ? filterHero.push(hero) : null;
-          });
+          _this.filterHeroes(heroes.heroes.filter(function (hero) {
+            return hero.talents.exp;
+          }));
 
-          _this.setState({
-            heroes: filterHero
-          });
+          break;
+
+        case 'ms':
+          _this.filterHeroes(heroes.heroes.filter(function (hero) {
+            return hero.talents.ms;
+          }));
 
           break;
 
         case 'attackspeed':
-          heroes.heroes.map(function (hero) {
-            hero.talents.lvl10.attackspeed == true || hero.talents.lvl15.attackspeed == true || hero.talents.lvl20.attackspeed == true || hero.talents.lvl25.attackspeed == true ? filterHero.push(hero) : null;
-          });
+          _this.filterHeroes(heroes.heroes.filter(function (hero) {
+            return hero.talents.attackspeed;
+          }));
 
-          _this.setState({
-            heroes: filterHero
-          });
+          break;
+
+        case 'spelldamage':
+          _this.filterHeroes(heroes.heroes.filter(function (hero) {
+            return hero.talents.spelldamage;
+          }));
+
+          break;
+
+        case 'cd':
+          _this.filterHeroes(heroes.heroes.filter(function (hero) {
+            return hero.talents.cd;
+          }));
 
           break;
       }
@@ -11205,28 +11218,37 @@ function (_React$Component) {
       return react_default.a.createElement("div", {
         className: "grid"
       }, react_default.a.createElement("div", {
-        className: "grid__header"
+        className: "grid__filter"
       }, react_default.a.createElement("div", {
-        className: "grid__talant",
+        className: "grid__filter_item",
         onClick: function onClick() {
           return _this2.sortHeroes('all');
         }
       }, "\u0432\u0441\u0435"), react_default.a.createElement("div", {
-        className: "grid__talant",
+        className: "grid__filter_item",
         onClick: function onClick() {
           return _this2.sortHeroes('exp');
         }
       }, "+\u043E\u043F\u044B\u0442"), react_default.a.createElement("div", {
-        className: "grid__talant",
+        className: "grid__filter_item",
         onClick: function onClick() {
           return _this2.sortHeroes('attackspeed');
         }
       }, "\u0441\u043A\u043E\u0440\u043E\u0441\u0442\u044C \u0430\u0442\u0430\u043A\u0438"), react_default.a.createElement("div", {
-        className: "grid__talant"
+        className: "grid__filter_item",
+        onClick: function onClick() {
+          return _this2.sortHeroes('ms');
+        }
+      }, "\u0441\u043A\u043E\u0440\u043E\u0441\u0442\u044C \u0431\u0435\u0433\u0430"), react_default.a.createElement("div", {
+        className: "grid__filter_item",
+        onClick: function onClick() {
+          return _this2.sortHeroes('spelldamage');
+        }
       }, "\u0443\u0440\u043E\u043D \u0441\u043F\u043E\u0441\u043E\u0431\u043D\u043E\u0441\u0442\u0435\u0439"), react_default.a.createElement("div", {
-        className: "grid__talant"
-      }, "+\u043A \u0441\u0438\u043B\u0435"), react_default.a.createElement("div", {
-        className: "grid__talant"
+        className: "grid__filter_item",
+        onClick: function onClick() {
+          return _this2.sortHeroes('cd');
+        }
       }, "\u043F\u0435\u0440\u0435\u0437\u0430\u0440\u044F\u0434\u043A\u0430")), react_default.a.createElement("div", {
         className: "grid__heroes"
       }, this.state.heroes.map(function (hero) {

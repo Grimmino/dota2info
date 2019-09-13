@@ -13,8 +13,12 @@ export default class Grid extends React.Component {
     }
 
     componentWillMount = () => {
+        this.filterHeroes(heroesUrl.heroes)
+    }
+
+    filterHeroes = (arrayheroes) => {
         this.setState({
-            heroes: heroesUrl.heroes
+            heroes: arrayheroes
         })
     }
 
@@ -25,39 +29,18 @@ export default class Grid extends React.Component {
     }
 
     sortHeroes = (filter) => {
-        const filterHero = []
         switch (filter) {
-            case 'all':
-                this.setState({
-                    heroes: heroesUrl.heroes
-                })
+            case 'all': this.filterHeroes(heroesUrl.heroes)
                 break
-
-            case 'exp':
-                heroesUrl.heroes.map(hero => {
-                    hero.talents.lvl10.exp == true
-                        ? filterHero.push(hero)
-                        : null
-                })
-
-                this.setState({
-                    heroes: filterHero
-                })
+            case 'exp': this.filterHeroes(heroesUrl.heroes.filter(hero => hero.talents.exp))
                 break
-
-            case 'attackspeed':
-                heroesUrl.heroes.map(hero => {
-                    hero.talents.lvl10.attackspeed == true ||
-                    hero.talents.lvl15.attackspeed == true ||
-                    hero.talents.lvl20.attackspeed == true ||
-                    hero.talents.lvl25.attackspeed == true
-                        ? filterHero.push(hero)
-                        : null
-                })
-
-                this.setState({
-                    heroes: filterHero
-                })
+            case 'ms': this.filterHeroes(heroesUrl.heroes.filter(hero => hero.talents.ms))
+                break
+            case 'attackspeed': this.filterHeroes(heroesUrl.heroes.filter(hero => hero.talents.attackspeed))
+                break
+            case 'spelldamage': this.filterHeroes(heroesUrl.heroes.filter(hero => hero.talents.spelldamage))
+                break
+            case 'cd': this.filterHeroes(heroesUrl.heroes.filter(hero => hero.talents.cd))
                 break
         }
     }
@@ -65,13 +48,13 @@ export default class Grid extends React.Component {
     render() {
         return (
             <div className="grid">
-                <div className="grid__header">
-                    <div className="grid__talant" onClick={() => this.sortHeroes('all')}>все</div>
-                    <div className="grid__talant" onClick={() => this.sortHeroes('exp')}>+опыт</div>
-                    <div className="grid__talant" onClick={() => this.sortHeroes('attackspeed')}>скорость атаки</div>
-                    <div className="grid__talant">урон способностей</div>
-                    <div className="grid__talant">+к силе</div>
-                    <div className="grid__talant">перезарядка</div>
+                <div className="grid__filter">
+                    <div className="grid__filter_item" onClick={() => this.sortHeroes('all')}>все</div>
+                    <div className="grid__filter_item" onClick={() => this.sortHeroes('exp')}>+опыт</div>
+                    <div className="grid__filter_item" onClick={() => this.sortHeroes('attackspeed')}>скорость атаки</div>
+                    <div className="grid__filter_item" onClick={() => this.sortHeroes('ms')}>скорость бега</div>
+                    <div className="grid__filter_item" onClick={() => this.sortHeroes('spelldamage')}>урон способностей</div>
+                    <div className="grid__filter_item" onClick={() => this.sortHeroes('cd')}>перезарядка</div>
                 </div>
 
                 <div className="grid__heroes">

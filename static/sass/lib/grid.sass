@@ -1,8 +1,16 @@
 .grid
-    &__header
-        display: flex
-        justify-content: space-between
+    display: flex
+    &__filter
+        &_item
+            padding: 5px 0
+            cursor: pointer
+            color: #fff
+            &:hover
+                background: $font-color
+                color: $main-color
+                
     &__heroes
+        flex: 1
         display: flex
         flex-wrap: wrap
 
