@@ -15,7 +15,7 @@
         flex-wrap: wrap
 
 .hero
-    width: 10%
+    width: 100px
     height: 70px
     display: flex
     align-items: center
@@ -24,10 +24,15 @@
         text-align: center
         width: 80%
         height: 60px
-        background: $font-color
         color: $main-color
         line-height: 60px
         cursor: pointer
+        &_str
+            background: #921a1a
+        &_agi
+            background: #2b6d2b
+        &_int
+            background: #17179e
         &:hover
             background: #f1f1f1
     &__info

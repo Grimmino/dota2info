@@ -330,7 +330,7 @@ h2 {
     flex-wrap: wrap; }
 
 .hero {
-  width: 10%;
+  width: 100px;
   height: 70px;
   display: flex;
   align-items: center;
@@ -339,10 +339,15 @@ h2 {
     text-align: center;
     width: 80%;
     height: 60px;
-    background: #fff;
     color: #141c25;
     line-height: 60px;
     cursor: pointer; }
+    .hero__name_str {
+      background: #921a1a; }
+    .hero__name_agi {
+      background: #2b6d2b; }
+    .hero__name_int {
+      background: #17179e; }
     .hero__name:hover {
       background: #f1f1f1; }
   .hero__info {

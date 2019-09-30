@@ -3,23 +3,26 @@
     {
         "id" : 1,
         "name": "Abaddon",
-        "talents": { 
+        "options": {
             "exp": true,
             "ms": true,
             "cd": true,
-            "lvl10": { 
+            "damage": true
+        },
+        "talents": {
+            "lvl10": {
                 "left": "+ 25 к опыту",
                 "right": "20 к скорости передвижения"
             },
-            "lvl15": { 
+            "lvl15": {
                 "left": "+60 к урону/лечению от Mist Coil",
                 "right": "+8 к броне"
             },
-            "lvl20": { 
+            "lvl20": {
                 "left": "+90 к урону",
                 "right": "-20% перезарядки способностей и предметов"
             },
-            "lvl25": { 
+            "lvl25": {
                 "left": "Mist Coil применяется по области радиусом 375",
                 "right": "+225 к здоровью щита от Aphotic Shield"
             }
@@ -28,115 +31,25 @@
     {
         "id" : 2,
         "name": "Alchemist",
-        "talents": { 
-            "attackspeed": true,
-            "lvl10": { 
+        "options": {
+            "attackspeed": true
+        },
+        "talents": {
+            "lvl10": {
                 "left": "-7 сек. перезарядки Unstable Concoction",
                 "right": "+25 к скорости атаки"
             },
-            "lvl15": { 
+            "lvl15": {
                 "left": "+50 к урону",
                 "right": "+400 к здоровью"
             },
-            "lvl20": { 
+            "lvl20": {
                 "left": "+400 к урону от Unstable Concoction",
                 "right": "+40% к прорубающему урону"
             },
-            "lvl25": { 
+            "lvl25": {
                 "left": "+30 к восстановлению здоровья от Chemical Rage",
                 "right": "-0,2 от задержки перед атакой у Chemical Rage"
-            }
-        }
-    },
-    {
-        "id" : 3,
-        "name": "Ancient Apparition",
-        "talents": { 
-            "spelldamage": true,
-            "lvl10": { 
-                "left": "+10% к урону от способностей",
-                "right": "+90 золота в минуту"
-            },
-            "lvl15": { 
-                "left": "+15 здоровья в секунду",
-                "right": "-2,5 сек. перезарядки Ice Vortex"
-            },
-            "lvl20": { 
-                "left": "+80 к урону от Chilling Touch",
-                "right": "+8% к замедлению и маг. урону от Ice Vortex"
-            },
-            "lvl25": { 
-                "left": "+5% к здоровью для убийства от Ice Blast",
-                "right": "Cold Feet применяется по области радиусом 625"
-            }
-        }
-    },
-    {
-        "id" : 4,
-        "name": "Anti-Mage",
-        "talents": { 
-            "attackspeed": true,
-            "lvl10": {
-                "left": "+20 к скорости атаки",
-                "right": "+10 к силе"
-            },
-            "lvl15": { 
-                "left": "+15 к ловкости",
-                "right": "+400 к дальности Blink"
-            },
-            "lvl20": { 
-                "left": "-2,5 сек. перезарядки Blink",
-                "right": "Blink оставляет бесконтрольную иллюзию"
-            },
-            "lvl25": { 
-                "left": "-50 сек. перезарядки Mana Void",
-                "right": "+25% к сопротивлению магии от Counterspell"
-            }
-        }
-    },
-    {
-        "id" : 5,
-        "name": "Arc Warden",
-        "talents": { 
-            "attackspeed": true,
-            "cd": true,
-            "lvl10": { 
-                "left": "+35 к скорости атаки",
-                "right": "-8% перезарядки способностей и предметов"
-            },
-            "lvl15": { 
-                "left": "+400 к дальности применения Flux",
-                "right": "+300 к здоровью"
-            },
-            "lvl20": { 
-                "left": "+125 к дальности атаки",
-                "right": "-2 сек. перезарядки Spark Wraith"
-            },
-            "lvl25": { 
-                "left": "+350 к урону от Spark Wraith",
-                "right": "+30% к вампиризму"
-            }
-        }
-    },
-    {
-        "id" : 2,
-        "name": "test",
-        "talents": { 
-            "lvl10": { 
-                "left": "234",
-                "right": "123"
-            },
-            "lvl15": { 
-                "left": "123",
-                "right": "123"
-            },
-            "lvl20": { 
-                "left": "123",
-                "right": "123"
-            },
-            "lvl25": { 
-                "left": "123",
-                "right": "123"
             }
         }
     }
