@@ -11255,10 +11255,9 @@ function (_React$Component) {
     });
 
     Grid_defineProperty(Grid_assertThisInitialized(_this), "filter", function (filters) {
-      var heroes = _this.state.heroes.filter(function (hero) {
+      var heroes = filters.includes('All') ? _this.state.heroes : _this.state.heroes.filter(function (hero) {
         return filters.includes(hero.attack_type) && filters.includes(hero.primary_attr);
       });
-
       return heroes;
     });
 

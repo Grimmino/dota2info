@@ -29,7 +29,7 @@ export default class Grid extends React.Component {
     }
 
     filter = (filters) => {
-        const heroes = this.state.heroes.filter(hero => {
+        const heroes = filters.includes('All') ? this.state.heroes : this.state.heroes.filter(hero => {
             return filters.includes(hero.attack_type) && filters.includes(hero.primary_attr)
         })
 
