@@ -118,15 +118,6 @@ if (false) { var throwOnDirectAccess, ReactIs; } else {
 "use strict";
 
 
-module.exports = __webpack_require__(21);
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
 var randomFromSeed = __webpack_require__(22);
 
 var ORIGINAL = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_-';
@@ -232,6 +223,75 @@ module.exports = {
   lookup: lookup,
   shuffled: getShuffled
 };
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/**
+ * Copyright (c) 2014-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+/**
+ * Similar to invariant but only logs a warning if the condition is not met.
+ * This can be used to log issues in development environments in critical
+ * paths. Removing the logging code for production environments will keep the
+ * same logic and follow the same code paths.
+ */
+
+var __DEV__ = "production" !== 'production';
+
+var warning = function () {};
+
+if (__DEV__) {
+  var printWarning = function printWarning(format, args) {
+    var len = arguments.length;
+    args = new Array(len > 1 ? len - 1 : 0);
+
+    for (var key = 1; key < len; key++) {
+      args[key - 1] = arguments[key];
+    }
+
+    var argIndex = 0;
+    var message = 'Warning: ' + format.replace(/%s/g, function () {
+      return args[argIndex++];
+    });
+
+    if (typeof console !== 'undefined') {
+      console.error(message);
+    }
+
+    try {
+      // --- Welcome to debugging React ---
+      // This error was thrown as a convenience so that you can use this stack
+      // to find the callsite that caused this warning to fire.
+      throw new Error(message);
+    } catch (x) {}
+  };
+
+  warning = function (condition, format, args) {
+    var len = arguments.length;
+    args = new Array(len > 2 ? len - 2 : 0);
+
+    for (var key = 2; key < len; key++) {
+      args[key - 2] = arguments[key];
+    }
+
+    if (format === undefined) {
+      throw new Error('`warning(condition, format, ...args)` requires a warning ' + 'message argument');
+    }
+
+    if (!condition) {
+      printWarning.apply(null, [format].concat(args));
+    }
+  };
+}
+
+module.exports = warning;
 
 /***/ }),
 /* 4 */
@@ -947,75 +1007,6 @@ try {
 /* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-/**
- * Copyright (c) 2014-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-/**
- * Similar to invariant but only logs a warning if the condition is not met.
- * This can be used to log issues in development environments in critical
- * paths. Removing the logging code for production environments will keep the
- * same logic and follow the same code paths.
- */
-
-var __DEV__ = "production" !== 'production';
-
-var warning = function () {};
-
-if (__DEV__) {
-  var printWarning = function printWarning(format, args) {
-    var len = arguments.length;
-    args = new Array(len > 1 ? len - 1 : 0);
-
-    for (var key = 1; key < len; key++) {
-      args[key - 1] = arguments[key];
-    }
-
-    var argIndex = 0;
-    var message = 'Warning: ' + format.replace(/%s/g, function () {
-      return args[argIndex++];
-    });
-
-    if (typeof console !== 'undefined') {
-      console.error(message);
-    }
-
-    try {
-      // --- Welcome to debugging React ---
-      // This error was thrown as a convenience so that you can use this stack
-      // to find the callsite that caused this warning to fire.
-      throw new Error(message);
-    } catch (x) {}
-  };
-
-  warning = function (condition, format, args) {
-    var len = arguments.length;
-    args = new Array(len > 2 ? len - 2 : 0);
-
-    for (var key = 2; key < len; key++) {
-      args[key - 2] = arguments[key];
-    }
-
-    if (format === undefined) {
-      throw new Error('`warning(condition, format, ...args)` requires a warning ' + 'message argument');
-    }
-
-    if (!condition) {
-      printWarning.apply(null, [format].concat(args));
-    }
-  };
-}
-
-module.exports = warning;
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports, __webpack_require__) {
-
 /*
 	MIT License http://www.opensource.org/licenses/mit-license.php
 	Author Tobias Koppers @sokra
@@ -1417,7 +1408,7 @@ function updateLink (link, options, obj) {
 
 
 /***/ }),
-/* 7 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1518,7 +1509,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 };
 
 /***/ }),
-/* 8 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1548,6 +1539,15 @@ if (true) {
   checkDCE();
   module.exports = __webpack_require__(18);
 } else {}
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = __webpack_require__(21);
 
 /***/ }),
 /* 9 */
@@ -1617,7 +1617,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(6)(content, options);
+var update = __webpack_require__(5)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -1737,7 +1737,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(6)(content, options);
+var update = __webpack_require__(5)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -1770,7 +1770,7 @@ if(false) {}
  */
 
 
-var h = __webpack_require__(7),
+var h = __webpack_require__(6),
     n = "function" === typeof Symbol && Symbol.for,
     p = n ? Symbol.for("react.element") : 60103,
     q = n ? Symbol.for("react.portal") : 60106,
@@ -2197,7 +2197,7 @@ module.exports = Z.default || Z;
 
 
 var aa = __webpack_require__(0),
-    m = __webpack_require__(7),
+    m = __webpack_require__(6),
     q = __webpack_require__(19);
 
 function t(a) {
@@ -9382,7 +9382,7 @@ exports.unstable_getFirstCallbackNode = function () {
 "use strict";
 
 
-var alphabet = __webpack_require__(3);
+var alphabet = __webpack_require__(2);
 
 var build = __webpack_require__(23);
 
@@ -9486,7 +9486,7 @@ module.exports = {
 
 var generate = __webpack_require__(24);
 
-var alphabet = __webpack_require__(3); // Ignore all milliseconds before a certain time to reduce the size of the date entropy without sacrificing uniqueness.
+var alphabet = __webpack_require__(2); // Ignore all milliseconds before a certain time to reduce the size of the date entropy without sacrificing uniqueness.
 // This number should be updated every year or so to keep the generated id short.
 // To regenerate `new Date() - 0` and bump the version. Always bump the version!
 
@@ -9535,7 +9535,7 @@ module.exports = build;
 "use strict";
 
 
-var alphabet = __webpack_require__(3);
+var alphabet = __webpack_require__(2);
 
 var random = __webpack_require__(25);
 
@@ -9650,7 +9650,7 @@ module.exports = function (random, alphabet, size) {
 "use strict";
 
 
-var alphabet = __webpack_require__(3);
+var alphabet = __webpack_require__(2);
 
 function isShortId(id) {
   if (!id || typeof id !== 'string' || id.length < 6) {
@@ -9764,6 +9764,9 @@ module.exports = ReactPropTypesSecret;
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 
+// EXTERNAL MODULE: ./node_modules/regenerator-runtime/runtime.js
+var runtime = __webpack_require__(4);
+
 // EXTERNAL MODULE: ./node_modules/normalize.css/normalize.css
 var normalize = __webpack_require__(11);
 
@@ -9778,11 +9781,11 @@ var react = __webpack_require__(0);
 var react_default = /*#__PURE__*/__webpack_require__.n(react);
 
 // EXTERNAL MODULE: ./node_modules/react-dom/index.js
-var react_dom = __webpack_require__(8);
+var react_dom = __webpack_require__(7);
 var react_dom_default = /*#__PURE__*/__webpack_require__.n(react_dom);
 
 // EXTERNAL MODULE: ./node_modules/warning/warning.js
-var warning = __webpack_require__(5);
+var warning = __webpack_require__(3);
 var warning_default = /*#__PURE__*/__webpack_require__.n(warning);
 
 // EXTERNAL MODULE: ./node_modules/prop-types/index.js
@@ -11073,132 +11076,29 @@ BrowserRouter_BrowserRouter.propTypes = {
 };
 /* harmony default export */ var es_BrowserRouter = (BrowserRouter_BrowserRouter);
 // EXTERNAL MODULE: ./node_modules/shortid/index.js
-var shortid = __webpack_require__(2);
+var shortid = __webpack_require__(8);
 var shortid_default = /*#__PURE__*/__webpack_require__.n(shortid);
 
-// EXTERNAL MODULE: ./node_modules/regenerator-runtime/runtime.js
-var runtime = __webpack_require__(4);
-var runtime_default = /*#__PURE__*/__webpack_require__.n(runtime);
-
-// CONCATENATED MODULE: ./static/components/main/TalentsCell.jsx
+// CONCATENATED MODULE: ./static/components/main/Heroes.jsx
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-function TalentsCell_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function Heroes_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-function TalentsCell_possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+function Heroes_possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function TalentsCell_inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function Heroes_inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-
-
-
-var TalentsCell_TalentsCell =
-/*#__PURE__*/
-function (_React$Component) {
-  TalentsCell_inherits(TalentsCell, _React$Component);
-
-  function TalentsCell() {
-    var _getPrototypeOf2;
-
-    var _this;
-
-    TalentsCell_classCallCheck(this, TalentsCell);
-
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    _this = TalentsCell_possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(TalentsCell)).call.apply(_getPrototypeOf2, [this].concat(args)));
-
-    _defineProperty(_assertThisInitialized(_this), "componentWillMount", function () {
-      console.log(_this.props.talents);
-    });
-
-    return _this;
-  }
-
-  _createClass(TalentsCell, [{
-    key: "render",
-    value: function render() {
-      return react_default.a.createElement("div", {
-        className: "hero__info"
-      }, react_default.a.createElement("div", {
-        className: "hero__talents"
-      }, react_default.a.createElement("div", {
-        className: "hero__talents_row"
-      }, react_default.a.createElement("div", {
-        className: "hero__talents_title"
-      }, "10 \u0443\u0440\u043E\u0432\u0435\u043D\u044C"), react_default.a.createElement("div", {
-        className: "hero__talents_cell"
-      }, this.props.talents.lvl10.left), react_default.a.createElement("div", {
-        className: "hero__talents_cell"
-      }, this.props.talents.lvl10.right)), react_default.a.createElement("div", {
-        className: "hero__talents_row"
-      }, react_default.a.createElement("div", {
-        className: "hero__talents_title"
-      }, "15 \u0443\u0440\u043E\u0432\u0435\u043D\u044C"), react_default.a.createElement("div", {
-        className: "hero__talents_cell"
-      }, this.props.talents.lvl15.left), react_default.a.createElement("div", {
-        className: "hero__talents_cell"
-      }, this.props.talents.lvl15.right)), react_default.a.createElement("div", {
-        className: "hero__talents_row"
-      }, react_default.a.createElement("div", {
-        className: "hero__talents_title"
-      }, "20 \u0443\u0440\u043E\u0432\u0435\u043D\u044C"), react_default.a.createElement("div", {
-        className: "hero__talents_cell"
-      }, this.props.talents.lvl20.left), react_default.a.createElement("div", {
-        className: "hero__talents_cell"
-      }, this.props.talents.lvl20.right)), react_default.a.createElement("div", {
-        className: "hero__talents_row"
-      }, react_default.a.createElement("div", {
-        className: "hero__talents_title"
-      }, "25 \u0443\u0440\u043E\u0432\u0435\u043D\u044C"), react_default.a.createElement("div", {
-        className: "hero__talents_cell"
-      }, this.props.talents.lvl25.left), react_default.a.createElement("div", {
-        className: "hero__talents_cell"
-      }, this.props.talents.lvl25.right))), react_default.a.createElement("div", {
-        className: "hero__layout",
-        onClick: this.props.showInfo
-      }));
-    }
-  }]);
-
-  return TalentsCell;
-}(react_default.a.Component);
-
-
-// CONCATENATED MODULE: ./static/components/main/Heroes.jsx
-function Heroes_typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { Heroes_typeof = function _typeof(obj) { return typeof obj; }; } else { Heroes_typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return Heroes_typeof(obj); }
-
-function Heroes_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function Heroes_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function Heroes_createClass(Constructor, protoProps, staticProps) { if (protoProps) Heroes_defineProperties(Constructor.prototype, protoProps); if (staticProps) Heroes_defineProperties(Constructor, staticProps); return Constructor; }
-
-function Heroes_possibleConstructorReturn(self, call) { if (call && (Heroes_typeof(call) === "object" || typeof call === "function")) { return call; } return Heroes_assertThisInitialized(self); }
-
-function Heroes_getPrototypeOf(o) { Heroes_getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return Heroes_getPrototypeOf(o); }
-
-function Heroes_assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function Heroes_inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) Heroes_setPrototypeOf(subClass, superClass); }
-
-function Heroes_setPrototypeOf(o, p) { Heroes_setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return Heroes_setPrototypeOf(o, p); }
-
-function Heroes_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
 
@@ -11220,9 +11120,9 @@ function (_React$Component) {
       args[_key] = arguments[_key];
     }
 
-    _this = Heroes_possibleConstructorReturn(this, (_getPrototypeOf2 = Heroes_getPrototypeOf(Heroes)).call.apply(_getPrototypeOf2, [this].concat(args)));
+    _this = Heroes_possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Heroes)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
-    Heroes_defineProperty(Heroes_assertThisInitialized(_this), "backGroundHero", function (primaryAttr) {
+    _defineProperty(_assertThisInitialized(_this), "backGroundHero", function (primaryAttr) {
       switch (primaryAttr) {
         case 'str':
           return 'hero__name_str';
@@ -11238,7 +11138,7 @@ function (_React$Component) {
     return _this;
   }
 
-  Heroes_createClass(Heroes, [{
+  _createClass(Heroes, [{
     key: "render",
     value: function render() {
       var _this2 = this;
@@ -11288,10 +11188,7 @@ function Grid_defineProperty(obj, key, value) { if (key in obj) { Object.defineP
 
 
 
-
-
-
-var url = 'https://api.opendota.com/api/heroes';
+var URL_API = 'https://api.opendota.com/api/heroes';
 
 var Grid_Grid =
 /*#__PURE__*/
@@ -11313,32 +11210,39 @@ function (_React$Component) {
 
     Grid_defineProperty(Grid_assertThisInitialized(_this), "state", {
       heroes: [],
-      filterHeroes: [],
-      isLoad: false,
-      isFiltered: false
+      heroesLoading: false,
+      filteredHeroes: []
     });
 
-    Grid_defineProperty(Grid_assertThisInitialized(_this), "componentDidMount",
+    Grid_defineProperty(Grid_assertThisInitialized(_this), "getHeroes",
     /*#__PURE__*/
     _asyncToGenerator(
     /*#__PURE__*/
-    runtime_default.a.mark(function _callee() {
-      return runtime_default.a.wrap(function _callee$(_context) {
+    regeneratorRuntime.mark(function _callee() {
+      var heroes;
+      return regeneratorRuntime.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              fetch("".concat(url)).then(function (res) {
+              _context.next = 2;
+              return fetch("".concat(URL_API)).then(function (res) {
                 return res.json();
-              }).then(function (result) {
-                _this.setState({
-                  isLoad: true,
-                  heroes: result
-                });
-
-                console.log(result);
+              }).then(function (heroes) {
+                return heroes;
+              }).catch(function (err) {
+                return console.log(err);
               });
 
-            case 1:
+            case 2:
+              heroes = _context.sent;
+
+              _this.setState({
+                heroesLoading: true,
+                heroes: heroes,
+                filteredHeroes: heroes
+              });
+
+            case 4:
             case "end":
               return _context.stop();
           }
@@ -11346,29 +11250,30 @@ function (_React$Component) {
       }, _callee);
     })));
 
-    Grid_defineProperty(Grid_assertThisInitialized(_this), "swithFilteredName", function (filterName) {
-      switch (filterName) {
-        case 'Melee':
-        case 'Ranged':
-          return _this.state.heroes.filter(function (hero) {
-            return hero.attack_type == "".concat(filterName);
-          });
-
-        case 'agi':
-        case 'str':
-        case 'int':
-          return _this.state.heroes.filter(function (hero) {
-            return hero.primary_attr == "".concat(filterName);
-          });
-      }
+    Grid_defineProperty(Grid_assertThisInitialized(_this), "componentDidMount", function () {
+      _this.getHeroes();
     });
 
-    Grid_defineProperty(Grid_assertThisInitialized(_this), "filter", function (filterName) {
-      var filtered = filterName == null ? _this.state.heroes : _this.swithFilteredName(filterName);
+    Grid_defineProperty(Grid_assertThisInitialized(_this), "filter", function (filters) {
+      var heroes = _this.state.heroes.filter(function (hero) {
+        return filters.includes(hero.attack_type) && filters.includes(hero.primary_attr);
+      });
+
+      return heroes;
+    });
+
+    Grid_defineProperty(Grid_assertThisInitialized(_this), "filteredHeroes", function () {
+      var inputs = document.querySelectorAll('.filter__item_checkbox');
+      var filters = [];
+      inputs.forEach(function (input) {
+        input.checked ? filters.push(input.dataset.name) : null;
+      });
+
+      var filteredHeroes = _this.filter(filters); //console.log(filteredHeroes)
+
 
       _this.setState({
-        filterHeroes: filtered,
-        isFiltered: true
+        filteredHeroes: filteredHeroes
       });
     });
 
@@ -11378,35 +11283,33 @@ function (_React$Component) {
   Grid_createClass(Grid, [{
     key: "render",
     value: function render() {
-      var _this2 = this;
-
-      var _this$state = this.state,
-          heroes = _this$state.heroes,
-          filterHeroes = _this$state.filterHeroes,
-          isLoad = _this$state.isLoad,
-          isFiltered = _this$state.isFiltered;
-
-      if (!isLoad) {
-        return react_default.a.createElement("div", null, "\u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0430");
-      } else {
-        return react_default.a.createElement("div", {
-          className: "grid"
-        }, react_default.a.createElement("div", {
-          className: "grid__filter"
-        }, this.props.filters.map(function (filter) {
-          return react_default.a.createElement("div", {
-            key: shortid_default.a.generate(),
-            className: "grid__filter_item",
-            onClick: function onClick() {
-              return _this2.filter(filter.filterName);
-            }
-          }, filter.txt);
-        })), react_default.a.createElement(Heroes_Heroes, {
-          isFiltered: isFiltered,
-          heroes: heroes,
-          filterHeroes: filterHeroes
-        }));
-      }
+      var filteredHeroes = this.state.filteredHeroes;
+      return react_default.a.createElement("div", {
+        className: "grid"
+      }, react_default.a.createElement("div", {
+        className: "filter"
+      }, react_default.a.createElement("ul", {
+        className: "filter__list"
+      }, this.props.taps.map(function (filter, index) {
+        return react_default.a.createElement("li", {
+          key: index,
+          className: "filter__item"
+        }, react_default.a.createElement("label", {
+          className: "filter__item_label"
+        }, react_default.a.createElement("input", {
+          "data-name": filter.name,
+          className: "filter__item_checkbox",
+          type: "checkbox"
+        }), react_default.a.createElement("span", {
+          className: "filter__item_txt"
+        }, filter.text)));
+      })), react_default.a.createElement("div", {
+        className: "filter__btn"
+      }, react_default.a.createElement("button", {
+        onClick: this.filteredHeroes
+      }, "Apply filters"))), react_default.a.createElement(Heroes_Heroes, {
+        heroes: filteredHeroes
+      }));
     }
   }]);
 
@@ -11415,24 +11318,24 @@ function (_React$Component) {
 
 
 Grid_Grid.defaultProps = {
-  filters: [{
-    filterName: null,
-    txt: 'все'
+  taps: [{
+    name: 'All',
+    text: 'Все'
   }, {
-    filterName: 'Melee',
-    txt: 'ближний бой'
+    name: 'Melee',
+    text: 'Ближний бой'
   }, {
-    filterName: 'Ranged',
-    txt: 'дальний бой'
+    name: 'Ranged',
+    text: 'Дальний бой'
   }, {
-    filterName: 'agi',
-    txt: 'ловкач'
+    name: 'str',
+    text: 'Силовики'
   }, {
-    filterName: 'str',
-    txt: 'силовик'
+    name: 'int',
+    text: 'Маги'
   }, {
-    filterName: 'int',
-    txt: 'интовик'
+    name: 'agi',
+    text: 'Ловкачи'
   }]
 };
 // CONCATENATED MODULE: ./static/components/app/App.jsx
@@ -11481,7 +11384,8 @@ function (_React$Component) {
 
 
 // CONCATENATED MODULE: ./static/index.js
-//sass
+ //sass
+
 
  //js
 

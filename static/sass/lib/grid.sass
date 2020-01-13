@@ -1,13 +1,24 @@
 .grid
     display: flex
     &__filter
+        width: 200px
         &_item
-            padding: 5px 0
-            cursor: pointer
             color: #fff
-            &:hover
-                background: $font-color
-                color: $main-color
+            margin-bottom: 10px
+        &__title
+            margin-bottom: 7px
+        &__sort
+            display: flex
+            flex-direction: column
+            &_label
+                cursor: pointer
+                &:not(:last-child)
+                    margin-bottom: 5px
+                &:hover
+                    background: $font-color
+                    color: $main-color
+            &_input
+                margin-right: 5px
                 
     &__heroes
         flex: 1

@@ -1,3 +1,4 @@
+import regeneratorRuntime from "regenerator-runtime"
 //sass
 import 'normalize.css'
 import './sass/style.sass'

@@ -22,9 +22,7 @@ export default class Heroes extends React.Component {
             <div className="grid__heroes">
                 {arrayHeroes.map(hero => (
                     <div key={shortid.generate()} className="hero">
-                        <div 
-                            className={`hero__name ${this.backGroundHero(hero.primary_attr)}`}
-                        >
+                        <div className={`hero__name ${this.backGroundHero(hero.primary_attr)}`}>
                             {hero.localized_name}
                         </div>
                     </div>

@@ -317,13 +317,25 @@ h2 {
 
 .grid {
   display: flex; }
-  .grid__filter_item {
-    padding: 5px 0;
-    cursor: pointer;
-    color: #fff; }
-    .grid__filter_item:hover {
-      background: #fff;
-      color: #141c25; }
+  .grid__filter {
+    width: 200px; }
+    .grid__filter_item {
+      color: #fff;
+      margin-bottom: 10px; }
+    .grid__filter__title {
+      margin-bottom: 7px; }
+    .grid__filter__sort {
+      display: flex;
+      flex-direction: column; }
+      .grid__filter__sort_label {
+        cursor: pointer; }
+        .grid__filter__sort_label:not(:last-child) {
+          margin-bottom: 5px; }
+        .grid__filter__sort_label:hover {
+          background: #fff;
+          color: #141c25; }
+      .grid__filter__sort_input {
+        margin-right: 5px; }
   .grid__heroes {
     flex: 1;
     display: flex;

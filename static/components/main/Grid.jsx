@@ -1,87 +1,109 @@
 import React from 'react'
-import shortid from 'shortid'
-import regeneratorRuntime from "regenerator-runtime"
-
-import TalentsCell from './TalentsCell.jsx'
 import Heroes from './Heroes.jsx'
 
-const url = 'https://api.opendota.com/api/heroes'
+const URL_API = 'https://api.opendota.com/api/heroes'
 
 export default class Grid extends React.Component {
 
     state = {
         heroes: [],
-        filterHeroes: [],
-        isLoad: false,
-        isFiltered: false
+        heroesLoading: false,
+        filteredHeroes: []
     }
 
-    componentDidMount = async () => {
-        fetch(`${url}`)
+    getHeroes = async () => {
+        const heroes = await fetch(`${URL_API}`)
             .then(res => res.json())
-            .then(
-                (result) => {                    
-                    this.setState({
-                        isLoad: true,
-                        heroes: result
-                    })
-                    console.log(result)
-                }
-            )
+            .then(heroes => heroes)
+            .catch(err => console.log(err))
+    
+        this.setState({
+            heroesLoading: true,
+            heroes: heroes,
+            filteredHeroes: heroes
+        })
     }
 
-    swithFilteredName = (filterName) => {
-        switch(filterName) {
-            case 'Melee': case 'Ranged':
-                return this.state.heroes.filter(hero => hero.attack_type == `${filterName}`)
-            case 'agi': case 'str': case 'int':
-                return this.state.heroes.filter(hero => hero.primary_attr == `${filterName}`)
-        }
+    componentDidMount = () => {
+        this.getHeroes()
     }
 
-    filter = (filterName) => {
-        let filtered = filterName == null ? this.state.heroes : this.swithFilteredName(filterName)
+    filter = (filters) => {
+        const heroes = this.state.heroes.filter(hero => {
+            return filters.includes(hero.attack_type) && filters.includes(hero.primary_attr)
+        })
+
+        return heroes
+    }
+
+    filteredHeroes = () => {
+        const inputs = document.querySelectorAll('.filter__item_checkbox')
+
+        const filters = []
+
+        inputs.forEach(input => {
+            input.checked ? filters.push(input.dataset.name) : null
+        })
+
+        const filteredHeroes = this.filter(filters)
+
+        //console.log(filteredHeroes)
 
         this.setState({
-            filterHeroes: filtered,
-            isFiltered: true
+            filteredHeroes: filteredHeroes
         })
     }
 
     render() {
-        let { heroes, filterHeroes, isLoad, isFiltered } = this.state
-        if(!isLoad) {
-            return <div>Загрузка</div>
-        } else {
-            return (
-                <div className="grid">
-                    <div className="grid__filter">
-                        {this.props.filters.map(filter => (
-                            <div 
-                                key={shortid.generate()} 
-                                className={`grid__filter_item`}
-                                onClick={() => this.filter(filter.filterName)}
-                            >
-                                {filter.txt}
-                            </div>
+        const { filteredHeroes } = this.state
+        return (
+            <div className="grid">
+                <div className="filter">
+                    <ul className="filter__list">
+                        {this.props.taps.map((filter, index) => (
+                            <li key={index} className="filter__item">
+                                <label className="filter__item_label">
+                                    <input data-name={filter.name} className="filter__item_checkbox" type="checkbox"/>
+                                    <span className="filter__item_txt">{filter.text}</span>
+                                </label>
+                            </li>
                         ))}
+                    </ul>
+                    <div className="filter__btn">
+                        <button onClick={this.filteredHeroes}>Apply filters</button>
                     </div>
-    
-                    <Heroes isFiltered={isFiltered} heroes={heroes} filterHeroes={filterHeroes}/>
                 </div>
-            )
-        }
+                <Heroes heroes={filteredHeroes} />
+            </div>
+        )
     }
 }
 
-
 Grid.defaultProps = {
-    filters: [
-        {filterName: null, txt: 'все'},
-        {filterName: 'Melee', txt: 'ближний бой'},
-        {filterName: 'Ranged', txt: 'дальний бой'},
-        {filterName: 'agi', txt: 'ловкач'},
-        {filterName: 'str', txt: 'силовик'},
-        {filterName: 'int', txt: 'интовик'},
+    taps: [
+        {
+            name: 'All',
+            text: 'Все'
+        },
+        {
+            name: 'Melee',
+            text: 'Ближний бой'
+        },
+        {
+            name: 'Ranged',
+            text: 'Дальний бой'
+        },
+        {
+            name: 'str',
+            text: 'Силовики'
+        },
+        {
+            name: 'int',
+            text: 'Маги'
+        },
+        {
+            name: 'agi',
+            text: 'Ловкачи'
+        }
     ]
-};
+}
